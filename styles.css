@@ -1,3 +1,7 @@
+* {
+  user-select: none;  
+}
+
 html, body {
   margin: 0; 
   padding: 0;
@@ -10,12 +14,12 @@ html, body {
   color: #E5E5E5;
 }
 
-#mouse {
+/* #mouse {
   position: absolute;
   transform: translate(-50%,-50%);
   border-radius: 50%;
   opacity: 0.2;
-}
+} */
 
 .box {
   display: inline-block;
@@ -33,8 +37,8 @@ html, body {
 
 .wrapper {
   position: relative;
-  top: 0;
-  right: 10px;
+  top: 15px;
+  right: 15px;
   
   min-height: 100vh;
   

@@ -1,6 +1,6 @@
 //Generates matrix
 var i = 0;
-let m = 9;
+let m = 10; //12 doable performance max
 
 while (i <= m * m) {
   if (i > 0) {
@@ -21,7 +21,7 @@ while (i <= m * m) {
 const box = document.querySelectorAll(".box");
 const fpsIndicator = document.querySelector("#fps");
 
-const radius = 700;
+let radius = 700;
 let originX = 0;
 let originY = 0;
 let originForceX = 0;
@@ -37,8 +37,18 @@ document.addEventListener("mousemove", function(e) {
   mouse.x = e.pageX;
   mouse.y = e.pageY;
   
-  mouseCircle.style.left = mouse.x + "px";
-  mouseCircle.style.top = mouse.y + "px";
+  // mouseCircle.style.left = mouse.x + "px";
+  // mouseCircle.style.top = mouse.y + "px";
+});
+
+//Radius amplifier
+document.addEventListener("mousedown", function(e) {
+  radius *= 5;
+});
+
+//Sets original radius 
+document.addEventListener("mouseup", function(e) {
+  radius /= 5;
 });
 
 //Gets the original position of the elements
@@ -72,11 +82,11 @@ setInterval(function () {
     //Calculates the force of repel
     repelForceX = elementX - (distanceX / distance) * radius / distance;
     repelForceY = elementY - (distanceY / distance) * radius / distance;
-  
+    
     //Calculates the drawback force
     originForceX = (element.originX - elementX) / 4;
     originForceY = (element.originY - elementY) / 4;
-
+    
     //Sets the position of the element dependent of the power of the forces
     element.style.left = repelForceX + originForceX + "px";
     element.style.top = repelForceY + originForceY + "px";
@@ -84,16 +94,15 @@ setInterval(function () {
     //Colors the elements depending of the distance between the mouse and elements
     element.style.backgroundColor = "rgb(" + Math.round(distance) + ", 172, 169)";
     // element.textContent = Math.floor(distance);
-
-    mouseCircle.style.backgroundColor = "rgb(" + Math.round(distanceX) + ", 172, 169)";
+    // mouseCircle.style.backgroundColor = "rgb(" + Math.round(distanceX) + ", 172, 169)";
   });
 }, 15);
 
 //Styles cursor
-const mouseCircle = document.querySelector("#mouse");
+// const mouseCircle = document.querySelector("#mouse");
 
-mouseCircle.style.width = radius / 4 + "px";
-mouseCircle.style.height = radius / 4 + "px";
+// mouseCircle.style.width = radius / 4 + "px";
+// mouseCircle.style.height = radius / 4 + "px";
   
 //Fps function
 const times = [];
