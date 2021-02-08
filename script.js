@@ -1,6 +1,6 @@
 //Generates matrix
 var i = 0;
-let m = 10; //12 doable performance max
+let m = 9; //12 doable performance max
 
 while (i <= m * m) {
   if (i > 0) {
